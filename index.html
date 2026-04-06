@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madraspatrolz 2.0 | Elite Car Spotting</title>
+
+    <!-- Logo & Icons -->
+    <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+
+    <!-- Use Google Fonts for the bold Neo-Brutalist typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress" class="scroll-progress"></div>
+
+    <!-- Custom Neo-Brutalist Cursor -->
+    <div class="cursor" id="cursor"></div>
+<div class="alert-ticker">
+    <div class="ticker-content">
+        <span class="ticker-item">🚨 NEW SPOT: Ferrari 812 Superfast at Alwarpet 🏎️</span>
+        <span class="ticker-item">🚨 TRENDING: Lamborghini SVJ Exhaust Revs 🔊</span>
+        <span class="ticker-item">🚨 MADRAS ALERT: Porsche GT3 RS spotted on ECR 🗺️</span>
+        <span class="ticker-item">🚨 NEW SPOT: Ferrari 812 Superfast at Alwarpet 🏎️</span>
+        <span class="ticker-item">🚨 TRENDING: Lamborghini SVJ Exhaust Revs 🔊</span>
+    </div>
+</div>
+
+    <nav class="navbar">
+        <div class="brand">
+            <img src="assets/logo.jpg" alt="Logo" class="navbar-logo" onerror="this.style.display='none'">
+            <div class="logo">MADRASPATROLZ</div>
+        </div>
+        <div class="nav-links">
+            <a href="#gallery">GALLERY</a>
+            <a href="#about">ABOUT</a>
+            <a href="https://instagram.com/madraspatrolz" target="_blank" rel="noopener noreferrer" class="btn-primary">INSTAGRAM</a>
+            <a href="https://youtube.com/channel/UClE62EmNnubTIkuLCTCZKNA" target="_blank" rel="noopener noreferrer" class="btn-youtube">YOUTUBE</a>
+            <button id="theme-toggle" class="btn-secondary" title="Switch to Night Patrol">🌙</button>
+        </div>
+    </nav>
+
+
+    <header class="hero" id="hero">
+        <div class="marquee">
+            <div class="marquee-content">
+                <span>VINTAGE & SUPER CARS • SPOTTED IN CHENNAI • VINTAGE & SUPER CARS • SPOTTED IN CHENNAI • VINTAGE & SUPER CARS • SPOTTED IN CHENNAI • VINTAGE & SUPER CARS • SPOTTED IN CHENNAI • </span>
+            </div>
+        </div>
+        
+        <h1>THE STREETS<br>OF MADRAS</h1>
+        <p>Witness the finest automotive engineering ever to grace the roads of Chennai. From screaming V12s to silent hyper-hybrids.</p>
+        
+        <div class="hero-submit-container">
+            <a href="#gallery" class="btn-large">EXPLORE GALLERY</a>
+            <button class="btn-large btn-rev" onclick="playExhaustAudio('Lamborghini Revuelto', 'assets/v12 sound.mp3')">🔊 REV EXHAUST</button>
+        </div>
+    </header>
+
+    <!-- NEW SPOT OF THE WEEK -->
+    <section id="spot-of-week" class="featured-section">
+        <div class="section-title">
+            <h2>SPOT OF THE WEEK</h2>
+        </div>
+        <div class="featured-card">
+            <div class="featured-img-wrapper">
+                <img src="assets/car16.jpg" alt="Lamborghini Revuelto" class="featured-img">
+            </div>
+            <div class="featured-content">
+                <h3>Lamborghini Revuelto (Magenta)</h3>
+                <div class="card-tag">HYPERCAR</div>
+                <p class="featured-location">📍 Chennai Streets</p>
+                <p class="featured-desc">This hybrid spaceship unleashes a mind-bending 1,001 horsepower via a new naturally aspirated V12 and three electric motors. The ultimate crown jewel of the week.</p>
+                <div class="rev-container">
+                    <button class="btn-large btn-rev" onclick="playExhaustAudio('Lamborghini Revuelto', 'assets/v12 sound.mp3')">🔊 REV EXHAUST</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW FILTER BAR -->
+    <section id="filters" class="filter-section">
+        <div class="filter-bar">
+            <button class="filter-btn active" data-filter="all">ALL SPOTS</button>
+            <button class="filter-btn" data-filter="SUPERCAR">SUPERCAR</button>
+            <button class="filter-btn" data-filter="HYPERCAR">HYPERCAR</button>
+            <button class="filter-btn" data-filter="JDM LEGEND">JDM LEGEND</button>
+            <button class="filter-btn" data-filter="M POWER">M POWER</button>
+            <button class="filter-btn" data-filter="VINTAGE">VINTAGE</button>
+            <button class="filter-btn" data-filter="LUXURY SUV">LUXURY</button>
+        </div>
+    </section>
+
+    <!-- NEW Cyber-Search Section -->
+    <section class="search-section">
+        <div class="search-container">
+            <input type="text" id="car-search" class="search-bar" placeholder="SEARCH FOR CARS, MODELS, OR LOCATIONS...">
+            <span class="search-icon">🔍</span>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery-section">
+        <div class="section-title">
+            <h2>LATEST SPOTS</h2>
+        </div>
+        <div class="grid" id="gallery-grid">
+            <!-- Cards will be populated dynamically by JS -->
+        </div>
+    </section>
+
+    <!-- NEW HEAT MAP ZONES -->
+    <section id="heat-map" class="heatmap-section">
+        <div class="section-title">
+            <h2>HOT ZONES 🗺️</h2>
+        </div>
+        <div class="zones-grid">
+            <div class="zone-card ecr">
+                <h3>ECR STRETCH</h3>
+                <p>The ultimate high-speed coastal runway. Best for weekend morning hypercar runs and blistering track specials.</p>
+                <div class="card-tag">🔥 EXTREME HEAT</div>
+            </div>
+            <div class="zone-card alwarpet">
+                <h3>ALWARPET</h3>
+                <p>Luxurious lanes filled with stealthy executive saloons, vintage German cruisers, and everyday supercars.</p>
+                <div class="card-tag">☕ SUNDAY DRIVES</div>
+            </div>
+            <div class="zone-card anna-nagar">
+                <h3>ANNA NAGAR</h3>
+                <p>A booming scene for pure muscle cars, loud JDM legends, and aggressive tuner culture.</p>
+                <div class="card-tag">🔊 LOUD ZONE</div>
+            </div>
+            <div class="zone-card cathedral">
+                <h3>CATHEDRAL ROAD</h3>
+                <p>Pinnacle luxury gathering spot. Expect to see majestic British flagships and opulent land yachts parked here.</p>
+                <div class="card-tag">👑 VIP ONLY</div>
+            </div>
+        </div>
+    </section>
+    <!-- Madras Soundboard Section -->
+    <section class="soundboard-section" id="soundboard">
+        <div class="section-title">
+            <h2>MADRAS SOUNDBOARD</h2>
+        </div>
+        <div class="soundboard-grid">
+            <div class="sound-card" onclick="playExhaustAudio('SVJ', 'assets/Lamborghini Aventador SVJ.mp3')">
+                <div class="sound-icon">🐂</div>
+                <h3>SVJ V12</h3>
+            </div>
+            <div class="sound-card" onclick="playExhaustAudio('812', 'assets/Ferrari 812 Superfast.mp3')">
+                <div class="sound-icon">🐎</div>
+                <h3>812 V12</h3>
+            </div>
+            <div class="sound-card" onclick="playExhaustAudio('458', 'assets/Ferrari 458 Italia.mp3')">
+                <div class="sound-icon">🇮🇹</div>
+                <h3>458 V8</h3>
+            </div>
+            <div class="sound-card" onclick="playExhaustAudio('Revuelto', 'assets/v12 sound.mp3')">
+                <div class="sound-icon">⚡</div>
+                <h3>REVUELTO</h3>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <div class="about-card">
+            <h2>ABOUT THE BROS</h2>
+            <p>We roam the streets of Chennai hunting for the rarest automotive legends. From timeless vintage classics hidden in old Madras garages to the latest hypercars cruising down ECR. Every spot carries a story.</p>
+            
+            <div class="team">
+                <div class="team-member">
+                    <!-- Save your brother's image as akdhu.jpg in an 'assets' folder -->
+                    <img src="assets/akdhu.jpg" alt="Spotter _.akdhuuuuuu._" class="team-img" onerror="this.src='https://placehold.co/400x400/23a094/121212?text=AKDHU&font=Montserrat'">
+                    <h3>SPOTTER</h3>
+                    <p>Capturing the beasts on the streets.</p>
+                    <a href="https://instagram.com/_.akdhuuuuuu._" target="_blank" rel="noopener noreferrer" class="btn-primary">@_.AKDHUUUUUU._</a>
+                </div>
+                <div class="team-member">
+                    <!-- Save your second brother's image as muzu.jpg in the 'assets' folder -->
+                    <img src="assets/muzu.jpg" alt="Spotter _.muzuuuuuu._" class="team-img" onerror="this.src='https://placehold.co/400x400/ffde59/121212?text=MUZU&font=Montserrat'">
+                    <h3>SPOTTER</h3>
+                    <p>Hunting the rarest automotive legends.</p>
+                    <a href="https://instagram.com/_.muzuuuuuu._" target="_blank" rel="noopener noreferrer" class="btn-primary">@_.MUZUUUUUU._</a>
+                </div>
+            </div>
+
+            <p class="follow-text">Follow our daily spots and submissions.</p>
+            <div class="social-links">
+                <a href="https://instagram.com/madraspatrolz" target="_blank" rel="noopener noreferrer" class="btn-secondary">@MADRASPATROLZ</a>
+                <a href="https://youtube.com/channel/UClE62EmNnubTIkuLCTCZKNA" target="_blank" rel="noopener noreferrer" class="btn-youtube">YOUTUBE VLOGS</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="submit" class="submit-spot-section">
+        <div class="submit-card">
+            <h2 class="form-title">DROP A SPOT 📸</h2>
+            <hr class="form-divider">
+            <form id="spot-form" class="spot-form">
+                <div class="form-group">
+                    <label for="car-model">CAR MODEL (E.G., PORSCHE 911 GT3)</label>
+                    <input type="text" id="car-model" name="car-model" required>
+                </div>
+                <div class="form-group">
+                    <label for="location">LOCATION SPOTTED</label>
+                    <select id="location" name="location">
+                        <option value="ECR Stretch">ECR Stretch</option>
+                        <option value="Alwarpet">Alwarpet</option>
+                        <option value="Anna Nagar">Anna Nagar</option>
+                        <option value="Boat Club">Boat Club</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="link">LINK TO IMAGE/REEL (OPTIONAL)</label>
+                    <input type="url" id="link" name="link" placeholder="https://instagram.com/...">
+                </div>
+                <button type="submit" class="btn-send">SEND TO PATROLZ</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <h2>STAY LOUD.</h2>
+        <div class="footer-links">
+            <a href="#">TOP</a>
+            <a href="https://instagram.com/madraspatrolz" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+            <a href="https://youtube.com/channel/UClE62EmNnubTIkuLCTCZKNA" target="_blank" rel="noopener noreferrer">YOUTUBE</a>
+        </div>
+        <div class="privacy-disclaimer">
+            <p><strong>PRIVACY NOTICE:</strong> We respect the privacy of all car owners. No owner identities or visible license plates are disclosed.</p>
+        </div>
+        <p>© 2026 Madraspatrolz. Built with Neo-brutalism.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <!-- Global Rev Counter UI -->
+    <div class="rev-counter-overlay" id="rev-counter">
+        <div class="gauge-container">
+            <div class="gauge-dial"></div>
+            <div class="gauge-needle" id="gauge-needle"></div>
+            <div class="gauge-center"></div>
+            <div class="rev-text">RPM x 1000</div>
+        </div>
+        <div class="car-name-display" id="rev-car-name">CAR REVIVING</div>
+    </div>
+</body>
+</html>
