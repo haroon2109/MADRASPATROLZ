@@ -47,4 +47,4 @@ Since this is a static project, no complex installation is required.
 ## 🏁 Join the Patrol
 Witness the finest automotive engineering ever to grace the roads of Chennai. The hunt for the loudest V12 is on.
 
-**Developed by Antigravity AI for Madraspatrolz.**
+**Developed by Mohamed Haroon.**
