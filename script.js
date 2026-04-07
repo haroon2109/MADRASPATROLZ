@@ -67,13 +67,37 @@ if (themeToggle) {
         themeToggle.textContent = isNight ? '☀️' : '🌙';
         themeToggle.title = isNight ? 'Switch to Daylight' : 'Switch to Night Patrol';
         
-        // Add a cool transition sound or effect here if needed
         console.log(`Madras Patrol: ${isNight ? 'NIGHT' : 'DAY'} MODE ACTIVATED`);
     });
 }
 
-// 3D Tilt Effect for Cards
+// Mobile Menu Logic
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+const navItems = document.querySelectorAll('.nav-links a, .nav-links button');
+
+if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Close menu when a link is clicked
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            body.style.overflow = '';
+        });
+    });
+}
+
+// 3D Tilt Effect for Cards (Disabled on mobile/touch)
 document.addEventListener('mousemove', (e) => {
+    // Check if it's a touch device or if cursor is disabled
+    if (window.matchMedia("(pointer: coarse)").matches) return;
+
     const cards = document.querySelectorAll('.card');
     cards.forEach(card => {
         const rect = card.getBoundingClientRect();
